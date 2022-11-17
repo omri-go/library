@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block title %}data all {% endblock %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<h1>{{ title}}</h1>
+<a class="btn btn-success" href="/add_customer/">Add Customer</a>
+<br>
+<br>
+<form method="post">
+    <div id="parent" ; border: 1px solid black; width: 70px; overflow: hidden; white-space: nowrap;>
+        <label for="content">Customer name:</label>
+
+        <input type="text" name="customer_name"
+               placeholder="Customer name"
+               value="{{ request.form['customer_name'] }}">
+
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+
+
+
+    <p class="important">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            {%- for customer in customers %}
+            <div class="col">
+                <div class="card">
+                    <img src="https://picsum.photos/20{{ customer.id}}" class="card-img-top">
+                    <div class="card-body">
+                        <p class="card-title">Key: {{ customer.id}}</p>
+                        <p class="card-text">Name: {{ customer.name}}</p>
+                        <p class="card-text">Age: {{ customer.age}}</p>
+                        <p class="card-text">City: {{ customer.city}}</p>
+
+                        <a class="btn btn-success" href="/update_customer/{{ customer.id}}">Update</a>
+                        <a class="btn btn-danger" href="/delete_customer/{{ customer.id}}">Delete</a>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+        {% endblock %}
+
+
+
+
+
+

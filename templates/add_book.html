@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+
+
+
+{% block content %}
+
+<h1>Add a New Book </h1>
+<form method="post">
+    <label for="title">Book name:</label>
+    <br>
+    <input type="text" name="name"
+           placeholder="book name"
+           value="{{ request.form['name'] }}">
+    <br>
+
+    <label for="content">Book author:</label>
+    <br>
+    <input type="text" name="author"
+           placeholder="book author"
+           value="{{ request.form['author'] }}">
+    <br>
+
+    <label for="content">Book published year:</label>
+    <br>
+    <input type="text" name="published_year"
+           placeholder="Book published year"
+           value="{{ request.form['published_year'] }}">
+    <br>
+
+    <label for="content">Book type</label>
+    <br>
+    <input type="text" name="type"
+           placeholder="Book type"
+           value="{{ request.form['type'] }}">
+    <br>
+
+    <label for="content">Copies</label>
+    <br>
+    <input type="text" name="copies"
+           placeholder="1"
+           value="{{ request.form['copies'] }}">
+    <br>
+    <br>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
+

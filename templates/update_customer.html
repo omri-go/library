@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+<h1>{% block title %} Update a book {% endblock %}</h1>
+
+
+{% block content %}
+<form method="post">
+    <label for="title">Title</label>
+    <br>
+    <input type="text" name="name"
+           placeholder="customer name"
+           value="{{ request.form['name'] or customer['name'] }}"></input>
+    <br>
+
+    <label for="content">customer age</label>
+    <br>
+    <input type="text" name="age"
+           placeholder="customer age"
+           value="{{ request.form['age'] or customer['age'] }}"></input>
+    <br>
+
+    <label for="content">customer city</label>
+    <br>
+    <input type="text" name="city"
+           placeholder="customer city"
+           value="{{ request.form['city'] or customer['city'] }}"></input>
+    <br>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
+

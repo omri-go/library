@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block title %}data all {% endblock %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<h1>{{ title}}</h1>
+<a class="btn btn-success" href="/add_book/">Add Book</a>
+<br>
+<br>
+<form method="post">
+    <div id="parent" ; border: 1px solid black; width: 70px; overflow: hidden; white-space: nowrap;>
+        <label for="content">Book name:</label>
+
+        <input type="text" name="book_name"
+               placeholder="Book name"
+               value="{{ request.form['book_name'] }}">
+
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<p class="important">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        {%- for book in books %}
+        <div class="col">
+            <div class="card">
+                <img src="https://picsum.photos/20{{ book.id}}" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title">Key: {{ book.id}}</p>
+                    <p class="card-text">Book: {{ book.name}}</p>
+                    <p class="card-text">Author: {{ book.author}}</p>
+                    <p class="card-text">Year: {{ book.published_year}}</p>
+                    <p class="card-text">Book type: {{ book.type}}</p>
+                    <p class="card-text">Book copies: {{ book.copies}}</p>
+                    <a class="btn btn-success" href="/update/{{ book.id}}">Update</a>
+                    <a class="btn btn-danger" href="/delete/{{ book.id}}">Delete</a>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    {% endblock %}
+
+
+
+
+
+

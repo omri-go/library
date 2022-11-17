@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+<h1>{% block title %} Update a book {% endblock %}</h1>
+
+
+{% block content %}
+<form method="post">
+    <label for="title">Customer id: {{ request.form['customer_id'] or loan['customer_id'] }}</label>
+    <label for="title">Book id: {{ request.form['book_id'] or loan['book_id'] }}</label>
+
+    <br>
+    <label for="content">start date</label>
+    <br>
+    <input type="date" id="start" name="loan_date"
+           value="{{ request.form['loan_date'] or loan['loan_date'] }}"
+           min="2018-02-03" max="2025-12-31">
+    <br>
+
+    <label for="content">Return date</label>
+    <br>
+    <input type="date" id="start" name="return_date"
+           value="{{ request.form['return_date'] }}"
+           min="2018-02-03" max="2025-12-31">
+    <br>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
+

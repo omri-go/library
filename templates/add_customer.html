@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+<h1>{% block title %} Add a New Customer {% endblock %}</h1>
+
+
+{% block content %}
+<h1>Add a Customer </h1>
+<form method="post">
+    <label for="title">Customer name:</label>
+    <br>
+    <input type="text" name="name"
+           placeholder="Post name"
+           value="{{ request.form['name'] }}">
+    <br>
+
+    <label for="content">Customer age:</label>
+    <br>
+    <input type="text" name="age"
+           placeholder="customer age"
+           value="{{ request.form['age'] }}">
+    <br>
+
+    <label for="content">Customer city address:</label>
+    <br>
+    <input type="text" name="city"
+           placeholder="customer city"
+           value="{{ request.form['city'] }}">
+    <br>
+    <br>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
+

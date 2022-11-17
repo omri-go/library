@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}data all {% endblock %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<h1>{{ title}}</h1>
+
+<a class="btn btn-success" href="/add_loan/">Add Loan</a>
+<a class="btn btn-success" href="/loans_data/late_loans/">Late Loans</a>
+
+<br>
+<br>
+
+<p class="important">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        {%- for loan in loans %}
+        <div class="col">
+            <div class="card">
+                <img src="{{url_for('static', filename='book1.jpg')}}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ loan.id}}</h5>
+                    <p class="card-text">Customer id: {{ loan.customer_id}}</p>
+                    <p class="card-text">Book id: {{ loan.book_id}}</p>
+                    <p class="card-text">Loan date: {{ loan.loan_date}}</p>
+                    <p class="card-text">Return date: {{ loan.return_date}}</p>
+
+                    <a class="btn btn-success" href="/update_loan/{{ loan.customer_id}}_{{ loan.book_id}}">Update</a>
+                    <a class="btn btn-danger" href="/delete_loan/{{ loan.customer_id}}_{{ loan.book_id}}">Delete</a>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    {% endblock %}
+
+
+
+
+
+
